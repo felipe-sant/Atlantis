@@ -17,8 +17,8 @@ O projeto consiste em criar um sistema de gerenciamento de parque aquático util
 
 | Atividades | Status                                                |   |
 |------------|-------------------------------------------------------|---| 
-| atv1       | <span style="color:red">Não iniciado</span>           |🔴|
-| atv2       | <span style="color:red">Não iniciado</span>           |🔴|
+| atv1       | <span style="color:red">Concluído</span>              |🟢|
+| atv2       | <span style="color:red">Em Desenvolvimento</span>     |🟡|
 | atv3       | <span style="color:red">Não iniciado</span>           |🔴|
 | atv4       | <span style="color:red">Não iniciado</span>           |🔴|
 | atv5       | <span style="color:red">Não iniciado</span>           |🔴|
