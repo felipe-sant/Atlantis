@@ -18,8 +18,8 @@ export default class ListagemTitulares extends Processo {
             if (this.titular(cliente)) {
                 this.impressor = new ImpressaorCliente(cliente)
                 console.log(this.impressor.imprimir())
+                this.entrada.aguardarEnter()
             }
-            this.entrada.aguardarEnter()
         })
     }
     private titular(cliente: Cliente): boolean {

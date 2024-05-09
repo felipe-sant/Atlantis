@@ -25,6 +25,19 @@ export default class ImpressaorCliente implements Impressor {
         impressao = impressao + `\n${this.impressor.imprimir()}`
 
         impressao = impressao + `\n****************************`
+
+        if (this.cliente.Dependentes != undefined && this.cliente.Dependentes.length > 0) {
+            impressao = impressao + `\nDependentes:`
+            this.cliente.Dependentes.forEach(dependente => {
+                impressao = impressao + `\n${dependente.Nome}`
+            })
+        }
+
+        if (this.cliente.Titular != undefined) {
+            impressao = impressao + `\nTitular:`
+            impressao = impressao + `\n${this.cliente.Titular.Nome}`
+        }
+
         return impressao
     }
 
