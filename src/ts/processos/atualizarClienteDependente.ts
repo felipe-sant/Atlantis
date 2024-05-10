@@ -6,6 +6,7 @@ import Cliente from "../modelos/cliente";
 import AtualizarData from "./atualizarData";
 import AtualizarNome from "./atualizarNome";
 import AtualizarNomeSocial from "./atualizarNomeSocial";
+import AtualizarTitular from "./atualizarTitular";
 
 export default class AtualizarClienteDependente extends Processo {
     private cliente: Cliente
@@ -40,7 +41,8 @@ export default class AtualizarClienteDependente extends Processo {
                 console.log('Atualizando documentos...')
                 break
             case 5:
-                console.log('Atualizando o titular...')
+                let titular = new AtualizarTitular(this.cliente)
+                titular.atualizar()
                 break
             case 6:
                 let impressao = new ImpressaorCliente(this.cliente)
