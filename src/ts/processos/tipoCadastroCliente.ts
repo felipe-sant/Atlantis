@@ -10,7 +10,7 @@ export default class TipoCadastroCliente extends Processo {
     processar(): void {
         this.menu.mostrar()
         this.opcao = this.entrada.receberNumero('Qual opção desejada?')
-        
+
         switch (this.opcao) {
             case 1:
                 this.processo = new CadastroClienteTitular()

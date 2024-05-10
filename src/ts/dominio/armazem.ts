@@ -12,7 +12,7 @@ export default class Armazem {
     public get Clientes() {
         return this.clientes
     }
-    public get Acomodacoes(){
+    public get Acomodacoes() {
         return this.acomodacoes
     }
 

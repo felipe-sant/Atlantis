@@ -7,7 +7,7 @@ export default abstract class Processo {
     protected entrada = new Entrada()
     protected processo!: Processo
     protected execucao!: boolean
-    public get Execucao(){
+    public get Execucao() {
         return this.execucao
     }
     abstract processar(): void
