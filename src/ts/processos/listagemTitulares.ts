@@ -3,6 +3,7 @@ import Armazem from "../dominio/armazem";
 import ImpressaorCliente from "../impressores/impressorCliente";
 import Impressor from "../interfaces/impressor";
 import Cliente from "../modelos/cliente";
+import verificarTitular from "../utils/verificarTitular";
 
 export default class ListagemTitulares extends Processo {
     private clientes: Cliente[]
@@ -15,18 +16,11 @@ export default class ListagemTitulares extends Processo {
         console.clear()
         console.log('Iniciando a listagem dos clientes titulares...')
         this.clientes.forEach(cliente => {
-            if (this.titular(cliente)) {
+            if (verificarTitular(cliente)) {
                 this.impressor = new ImpressaorCliente(cliente)
                 console.log(this.impressor.imprimir())
                 this.entrada.aguardarEnter()
             }
         })
-    }
-    private titular(cliente: Cliente): boolean {
-        let verificacao = false
-        if (cliente.Titular == undefined) {
-            verificacao = true
-        }
-        return verificacao
     }
 }

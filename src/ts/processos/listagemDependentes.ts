@@ -1,3 +1,4 @@
+import verificarDependenteDoTitular from "../utils/verificarDependenteDoTitular";
 import Processo from "../abstracoes/processo";
 import Armazem from "../dominio/armazem";
 import ImpressaorCliente from "../impressores/impressorCliente";
@@ -22,7 +23,7 @@ export default class ListagemDepentes extends Processo {
         } else {
             console.log('Iniciando a listagem dos clientes dependentes...')
             this.clientes.forEach(cliente => {
-                if (this.dependente(cliente, clienteTitular)) {
+                if (verificarDependenteDoTitular(cliente, clienteTitular)) {
                     this.impressor = new ImpressaorCliente(cliente)
                     console.log(this.impressor.imprimir())
                     this.entrada.aguardarEnter()
@@ -30,12 +31,5 @@ export default class ListagemDepentes extends Processo {
             })
         }
         
-    }
-    private dependente(cliente: Cliente, clienteTitular: Cliente | undefined): boolean {
-        let verificacao = false
-        if (cliente.Titular != undefined && cliente.Titular.Nome == clienteTitular?.Nome) {
-            verificacao = true
-        }
-        return verificacao
     }
 }
