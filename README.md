@@ -18,7 +18,7 @@ O projeto consiste em criar um sistema de gerenciamento de parque aquático util
 | Atividades                                                | Status                                            |   |
 |-----------------------------------------------------------|---------------------------------------------------|---| 
 | [atv1](https://github.com/felipe-sant/Atlantis/tree/atv1) | <span style="color:red">Concluído</span>          |🟢|
-| [atv2](https://github.com/felipe-sant/Atlantis/tree/atv2) | <span style="color:red">Em Desenvolvimento</span> |🟡|
-| atv3                                                      | <span style="color:red">Não iniciado</span>       |🔴|
+| [atv2](https://github.com/felipe-sant/Atlantis/tree/atv2) | <span style="color:red">Concluído</span>          |🟢|
+| atv3                                                      | <span style="color:red">Em Desenvolvimento</span> |🟡|
 | atv4                                                      | <span style="color:red">Não iniciado</span>       |🔴|
 | atv5                                                      | <span style="color:red">Não iniciado</span>       |🔴|
