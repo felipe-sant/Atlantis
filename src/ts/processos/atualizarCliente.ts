@@ -4,6 +4,7 @@ import Processo from "../abstracoes/processo";
 import Armazem from "../dominio/armazem";
 import Cliente from "../modelos/cliente";
 import AtualizarClienteDependente from "./atualizarClienteDependente";
+import AtualizarClienteTitular from "./atualizarClienteTitular";
 
 export default class AtualizarCliente extends Processo {
     private clientes: Cliente[]
@@ -21,18 +22,23 @@ export default class AtualizarCliente extends Processo {
         } else {
             if (verificarDependente(cliente)) {
                 let atualizarDependente = new AtualizarClienteDependente(cliente)
-                while(true){
+                while (true) {
                     atualizarDependente.processar()
                     if (!atualizarDependente.Execucao) {
                         break
                     }
                 }
-            } 
+            }
 
             if (verificarTitular(cliente)) {
-                console.log('Cliente é um titular')
-                return
-            } 
+                let atualizarTitular = new AtualizarClienteTitular(cliente)
+                while (true) {
+                    atualizarTitular.processar()
+                    if (!atualizarTitular.Execucao) {
+                        break
+                    }
+                }
+            }
         }
     }
 }

@@ -1,15 +1,14 @@
 import Processo from "../abstracoes/processo";
 import Armazem from "../dominio/armazem";
 import ImpressaorCliente from "../impressores/impressorCliente";
-import MenuAtualizarClienteDependente from "../menus/menuAtualizarClienteDependente";
+import MenuAtualizarClienteTitular from "../menus/menuAtualizarClienteTitular";
 import Cliente from "../modelos/cliente";
 import AtualizarData from "./atualizarData";
 import AtualizarDocumentos from "./atualizarDocumentos";
 import AtualizarNome from "./atualizarNome";
 import AtualizarNomeSocial from "./atualizarNomeSocial";
-import AtualizarTitular from "./atualizarTitular";
 
-export default class AtualizarClienteDependente extends Processo {
+export default class AtualizarClienteTitular extends Processo {
     private cliente: Cliente
     private clientes: Cliente[]
 
@@ -17,13 +16,13 @@ export default class AtualizarClienteDependente extends Processo {
         super()
         this.cliente = cliente
         this.clientes = Armazem.InstanciaUnica.Clientes
-        this.menu = new MenuAtualizarClienteDependente()
+        this.menu = new MenuAtualizarClienteTitular()
         this.execucao = true
     }
 
     processar(): void {
         this.menu.mostrar()
-        this.opcao = this.entrada.receberNumero('Qual opção desejada?')
+        this.opcao = this.entrada.receberNumero('Qual a opção desejada?')
 
         switch (this.opcao) {
             case 1:
@@ -35,21 +34,25 @@ export default class AtualizarClienteDependente extends Processo {
                 nomeSocial.atualizar()
                 break
             case 3:
-                let dataNascimento = new AtualizarData(this.cliente)
-                dataNascimento.atualizar()
+                let data = new AtualizarData(this.cliente)
+                data.atualizar()
                 break
             case 4:
-                let documentos = new AtualizarDocumentos(this.cliente)
-                documentos.processar()
+                console.log("atualizar telefone")
                 break
             case 5:
-                let titular = new AtualizarTitular(this.cliente)
-                titular.atualizar()
+                console.log("atualizar endereço")
                 break
             case 6:
+                let documentos = new AtualizarDocumentos(this.cliente)
+                documentos.processar()
+            case 7:
+                console.log("atualizar dependentes")
+                break
+            case 8:
                 let impressao = new ImpressaorCliente(this.cliente)
                 console.log(impressao.imprimir())
-                this.entrada.aguardarEnter()
+                this.entrada.aguardarEnter
                 break
             case 0:
                 let index = this.clientes.findIndex(c => c.Nome === this.cliente.Nome)
@@ -58,7 +61,7 @@ export default class AtualizarClienteDependente extends Processo {
                 this.execucao = false
                 break
             default:
-                console.log('Opção não entendida... :(')
+                console.log("Opção não entendida... :(")
         }
     }
 }
