@@ -7,6 +7,7 @@ import AtualizarData from "./atualizarData";
 import AtualizarDocumentos from "./atualizarDocumentos";
 import AtualizarNome from "./atualizarNome";
 import AtualizarNomeSocial from "./atualizarNomeSocial";
+import AtualizarTelefone from "./atualizarTelefone";
 
 export default class AtualizarClienteTitular extends Processo {
     private cliente: Cliente
@@ -38,7 +39,8 @@ export default class AtualizarClienteTitular extends Processo {
                 data.atualizar()
                 break
             case 4:
-                console.log("atualizar telefone")
+                let telefone = new AtualizarTelefone(this.cliente)
+                telefone.processar()
                 break
             case 5:
                 console.log("atualizar endereço")
