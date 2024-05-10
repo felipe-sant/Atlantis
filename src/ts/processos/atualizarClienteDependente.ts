@@ -4,6 +4,7 @@ import ImpressaorCliente from "../impressores/impressorCliente";
 import MenuAtualizarClienteDependente from "../menus/menuAtualizarClienteDependente";
 import Cliente from "../modelos/cliente";
 import AtualizarData from "./atualizarData";
+import AtualizarDocumentos from "./atualizarDocumentos";
 import AtualizarNome from "./atualizarNome";
 import AtualizarNomeSocial from "./atualizarNomeSocial";
 import AtualizarTitular from "./atualizarTitular";
@@ -38,7 +39,8 @@ export default class AtualizarClienteDependente extends Processo {
                 dataNascimento.atualizar()
                 break
             case 4:
-                console.log('Atualizando documentos...')
+                let documentos = new AtualizarDocumentos(this.cliente)
+                documentos.processar()
                 break
             case 5:
                 let titular = new AtualizarTitular(this.cliente)

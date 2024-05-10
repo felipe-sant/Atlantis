@@ -14,6 +14,11 @@ export default class CadastroPassaporte extends Processo {
         let numero = this.entrada.receberTexto('Qual o número do passaporte?')
         let dataExpedicao = this.entrada.receberData('Qual a data de expedição do passaporte?')
         let passaporte = new Documento(numero, TipoDocumento.Passaporte, dataExpedicao)
-        this.cliente.Documentos.push(passaporte)
+        let index = this.cliente.Documentos.findIndex(d => d.Tipo == TipoDocumento.Passaporte)
+        if (index == -1) {
+            this.cliente.Documentos.push(passaporte)
+        } else {
+            this.cliente.Documentos[index] = passaporte
+        }
     }
 }

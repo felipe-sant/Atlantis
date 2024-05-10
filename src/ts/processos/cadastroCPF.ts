@@ -14,6 +14,11 @@ export default class CadastroCPF extends Processo {
         let numero = this.entrada.receberTexto('Qual o número do CPF?')
         let dataExpedicao = this.entrada.receberData('Qual a data de expedição do CPF?')
         let cpf = new Documento(numero, TipoDocumento.CPF, dataExpedicao)
-        this.cliente.Documentos.push(cpf)
+        let index = this.cliente.Documentos.findIndex(d => d.Tipo == TipoDocumento.CPF)
+        if (index == -1) {
+            this.cliente.Documentos.push(cpf)
+        } else {
+            this.cliente.Documentos[index] = cpf
+        }
     }
 }
