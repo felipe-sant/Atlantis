@@ -28,6 +28,7 @@ export default class CadastroClienteDependente extends Processo {
         let dataNascimento = this.entrada.receberData("Qual a data de nascimento?")
         let cliente = new Cliente(nome, nomeSocial, dataNascimento)
 
+        cliente.Telefones = clienteTitular.Telefones
         cliente.Endereco = clienteTitular.Endereco
 
         this.processo = new CadastrarDocumentosCliente(cliente)
