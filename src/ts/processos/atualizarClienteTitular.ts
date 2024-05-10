@@ -51,9 +51,6 @@ export default class AtualizarClienteTitular extends Processo {
                 let documentos = new AtualizarDocumentos(this.cliente)
                 documentos.processar()
             case 7:
-                console.log("atualizar dependentes")
-                break
-            case 8:
                 let impressao = new ImpressaorCliente(this.cliente)
                 console.log(impressao.imprimir())
                 this.entrada.aguardarEnter
@@ -61,6 +58,10 @@ export default class AtualizarClienteTitular extends Processo {
             case 0:
                 let index = this.clientes.findIndex(c => c.Nome === this.cliente.Nome)
                 this.clientes[index] = this.cliente
+                this.cliente.Dependentes.forEach(d => {
+                    d.Endereco = this.cliente.Endereco
+                    d.Telefones = this.cliente.Telefones
+                })
                 console.log('Cliente atualizado com sucesso!')
                 this.execucao = false
                 break
