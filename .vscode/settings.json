@@ -1,0 +1,14 @@
+{
+    "git.enabled": true,
+    "files.exclude": {
+        ".vscode": true,
+        "node_modules": true,
+        ".gitignore": true,
+        "package.json": true,
+        "package-lock.json": true,
+        "LICENSE": true,
+        ".eslintrc*": true,
+        "tsconfig.*": true,
+        "README.md": true
+    }
+}
