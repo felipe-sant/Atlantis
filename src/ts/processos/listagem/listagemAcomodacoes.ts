@@ -18,6 +18,7 @@ export default class ListagemAcomodacoes extends Processo {
         this.acomodacoes.forEach(acomodacao => {
             this.impressor = new ImpressorAcomodacao(acomodacao)
             console.log(this.impressor.imprimir())
+            this.entrada.aguardarEnter()
             console.log(`-------------------------------------------------`)
         })
     }

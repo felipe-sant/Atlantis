@@ -12,6 +12,7 @@ export default class Principal extends Processo {
         this.execucao = true
         this.menu = new MenuPrincipal()
     }
+
     processar(): void {
         this.menu.mostrar()
         this.opcao = this.entrada.receberNumero('Qual opção desejada?')
@@ -34,6 +35,9 @@ export default class Principal extends Processo {
             case 5:
                 this.processo = new ListagemAcomodacoes()
                 this.processo.processar()
+                break
+            case 6:
+                console.log('Processo de designação de acomodação ao titular...')
                 break
             case 0:
                 this.execucao = false
