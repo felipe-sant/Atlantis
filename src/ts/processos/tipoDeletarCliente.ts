@@ -17,7 +17,7 @@ export default class TipoDeletarCliente extends Processo {
 
         if (cliente != undefined) {
             if (isDependente(cliente)) {
-                let titular = this.clientes.find(c => c = cliente.Titular)
+                let titular = this.clientes.find(c => c == cliente?.Titular)
                 if (titular != undefined) {
                     let indice = titular.Dependentes.indexOf(cliente)
                     titular.Dependentes.splice(indice, 1)
