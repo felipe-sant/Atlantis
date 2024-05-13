@@ -4,6 +4,7 @@ import ListagemAcomodacoes from "./listagem/listagemAcomodacoes"
 import TipoAtualizarCliente from "./tipoAtualizarCliente"
 import TipoCadastroCliente from "./tipoCadastroCliente"
 import TipoDeletarCliente from "./tipoDeletarCliente"
+import TipoDesignarAcomodacao from "./tipoDesignarAcomodacao"
 import TipoListagemClientes from "./tipoListagemClientes"
 
 export default class Principal extends Processo {
@@ -37,7 +38,8 @@ export default class Principal extends Processo {
                 this.processo.processar()
                 break
             case 6:
-                console.log('Processo de designação de acomodação ao titular...')
+                this.processo = new TipoDesignarAcomodacao()
+                this.processo.processar()
                 break
             case 0:
                 this.execucao = false

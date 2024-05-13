@@ -31,6 +31,7 @@ export default class Cliente {
     public get Documentos() { return this.documentos }
     public get Dependentes() { return this.dependentes }
     public get Titular() { return this.titular }
+    public get Acomodacao() { return this.acomodacao }
 
     public set Nome(nome: string) { this.nome = nome }
     public set NomeSocial(nomeSocial: string) { this.nomeSocial = nomeSocial }
@@ -40,4 +41,5 @@ export default class Cliente {
     public set Documentos(documentos: Documento[]) { this.documentos = documentos }
     public set Dependentes(dependentes: Cliente[]) { this.dependentes = dependentes }
     public set Titular(titular: Cliente) { this.titular = titular }
+    public set Acomodacao(acomodacao: Acomodacao | undefined) { if (acomodacao) this.acomodacao = acomodacao}
 }
