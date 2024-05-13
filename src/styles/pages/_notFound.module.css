@@ -1,0 +1,9 @@
+.main {
+    height: 100vh;
+}
+
+.link {
+    height: 40px;
+    font-size: 1.2rem !important;
+    font-weight: 500;
+}
