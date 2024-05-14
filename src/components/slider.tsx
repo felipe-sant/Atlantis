@@ -1,4 +1,4 @@
-import css from "../styles/components/slider.module.css";
+import css from "../styles/slider.component.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade } from 'swiper/modules';
 import slider1 from "../images/slider1.jpg"
