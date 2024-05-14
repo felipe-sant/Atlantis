@@ -10,6 +10,7 @@ html {
   --font-title: Georgia, 'Times New Roman', Times, serif;
   --font-size: 1.25rem;
   --color: #a8f;
+  --color_transparent: hsla(257, 100%, 77%, 0.5);
   --color-light: #edf;
   --color-dark: #206;
   --color-black: #202020;
@@ -20,6 +21,10 @@ html {
 * {
   margin: 0;
   padding: 0;
+}
+
+main {
+  margin-top: 90px;
 }
 
 h1,
