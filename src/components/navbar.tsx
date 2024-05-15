@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import css from "../styles/navbar.component.module.css"
-import logo from "../images/logo.jpg"
+import logo from "../images/logo.png"
 
 export default function Navbar() {
     const pathname = useLocation().pathname

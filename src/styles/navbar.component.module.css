@@ -1,15 +1,15 @@
 .navbar {
     background-color: var(--color-white);
     border-bottom: 2px solid var(--color);
-    padding: 20px 20px;
-    margin: 0px 8px;
+    padding: 6px 34px 6px 20px;
+    margin: 0px 5px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    outline: 8px solid white;
+    outline: 5px solid white;
     position: fixed;
     top: 0;
-    width: calc(100% - 16px);
+    width: calc(100% - 10px);
 }
 
 .logo {
@@ -17,7 +17,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 
 .logo h1 {
@@ -32,8 +32,8 @@
 }
 
 .logo img {
-    width: 40px;
-    height: 40px;
+    width: 64px;
+    height: 64px;
     object-fit: cover;
     border-radius: 10px;
 }
