@@ -50,3 +50,12 @@
     min-width: none;
 }
 
+.hospedagens {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 30px 20px;
+}
+

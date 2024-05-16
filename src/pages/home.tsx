@@ -2,8 +2,43 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
 import Slider from "../components/slider";
 import css from "../styles/home.page.module.css"
+import { acomodacao } from "../types/acomodacao";
+import Acomodacao from "../components/acomodacao";
 
 export default function HomePage() {
+    const acomodacoes: acomodacao[] = [
+        {
+            imagem: 'https://placehold.co/250x300',
+            titulo: 'Solteiro Simples',
+            descricao: 'Acomodação simples para solteiro(a).'
+        },
+        {
+            imagem: 'https://placehold.co/250x300',
+            titulo: 'Solteiro Mais',
+            descricao: 'Acomodação com garagem para solteiro(a).'
+        },
+        {
+            imagem: 'https://placehold.co/250x300',
+            titulo: 'Casal Simples',
+            descricao: 'Acomodação simples para casal.'
+        },
+        {
+            imagem: 'https://placehold.co/250x300',
+            titulo: 'Famila Simples',
+            descricao: 'Acomodação para família com até duas crianças.'
+        },
+        {
+            imagem: 'https://placehold.co/250x300',
+            titulo: 'Familia Mais',
+            descricao: 'Acomodação para família com até cinco crianças.'
+        },
+        {
+            imagem: 'https://placehold.co/250x300',
+            titulo: 'Familia Super',
+            descricao: 'Acomodação para até duas familias, casal e três crianças cada.'
+        },
+    ]
+
     return (
         <main className={css.main}>
             <Navbar />
@@ -19,8 +54,10 @@ export default function HomePage() {
                 </article>
                 <article>
                     <h2>Nossas Hospedagens</h2>
-                    <div className="Hospedagens">
-
+                    <div className={css.hospedagens}>
+                        {acomodacoes.map((acomodacao, index) => (
+                            <Acomodacao key={index} acomodacao={acomodacao} />
+                        ))}
                     </div>
                 </article>
                 <article className={css.sobre}>
