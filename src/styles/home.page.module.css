@@ -1,4 +1,52 @@
 .main {
-    background-color: #202020;
-    color: white;
+    background-color: white;
+    color: #202020;
 }
+
+.conteudo {
+    max-width: 1200px;
+    min-width: none;
+    margin: 0 auto;
+    padding: 80px 40px;
+}
+
+.conteudo article {
+    padding: 40px 0px;
+}
+
+.conteudo h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.conteudo hr {
+    margin: 40px 0;
+}
+
+.paragrafos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 20px;
+}
+
+.paragrafos p {
+    text-align: center;
+    align-items: center;
+    width: 300px;
+    margin: auto;
+    line-height: 1.8rem;
+}
+
+.sobre .paragrafos {
+    flex-direction: column;
+}
+
+.sobre .paragrafos p {
+    max-width: 600px !important;
+    width: auto !important;
+    min-width: none;
+}
+
