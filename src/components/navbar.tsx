@@ -14,18 +14,37 @@ export default function Navbar() {
             marcado.clientes = true
     }
 
+    let teste = 0
+    const testar = () => {
+        teste += 1
+        if (teste === 3) {
+            window.location.href = "dev/teste"
+            // window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            teste = 0
+        }
+    }
+
     return (
         <header className={css.navbar}>
             <div className={css.logo}>
-                <img src={logo} alt="" />
+                <img src={logo} alt="" onClick={testar} />
                 <h1>
-                    <Link to="/">Atlantis</Link>
+                    <Link 
+                        to="/"
+                        target="_self"
+                    >Atlantis</Link>
                 </h1>
             </div>
             <nav className={css.nav}>
                 <ul>
                     <li className={marcado.clientes ? css.roxo : ""}>
-                        <Link to="/clientes" className="text link">Gerenciar Clientes</Link>
+                        <Link 
+                            to="/clientes" 
+                            className="text link"
+                            target="_self"
+                        >
+                            Gerenciar Clientes
+                        </Link>
                     </li>
                 </ul>
             </nav>

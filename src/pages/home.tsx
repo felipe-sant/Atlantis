@@ -4,6 +4,7 @@ import Slider from "../components/slider";
 import css from "../styles/home.page.module.css"
 import { acomodacao } from "../types/acomodacao";
 import Acomodacao from "../components/acomodacao";
+import Footer from "../components/footer";
 
 export default function HomePage() {
     const acomodacoes: acomodacao[] = [
@@ -48,7 +49,7 @@ export default function HomePage() {
                     <h2>Funcionalidades do Site</h2>
                     <div className={css.paragrafos}>
                         <p>Nosso site simplifica o cadastro de clientes titulares e dependentes, facilitando o gerenciamento de dados pessoais e de contato.</p>
-                        <p>Com a funcionalidade de CRUD, os usuários podem facilmente <Link to="/clientes" className="span link">gerenciar clientes</Link>, atualizando informações e adicionando ou removendo dependentes conforme necessário.</p>
+                        <p>Com a funcionalidade de CRUD, é possivel facilmente <Link to="/clientes" className="span link">gerenciar clientes</Link>, atualizando informações e adicionando ou removendo dependentes conforme necessário.</p>
                         <p>Além disso, nosso sistema oferece um recurso integrado de registro de hospedagem, agilizando o acompanhamento das estadias dos clientes.</p>
                     </div>
                 </article>
@@ -69,6 +70,7 @@ export default function HomePage() {
                     </div>
                 </article>
             </section>
+            <Footer />
         </main>
     );
 }
