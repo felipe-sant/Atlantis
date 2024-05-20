@@ -1,0 +1,62 @@
+.conteudo {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.filtro {
+    background-color: var(--color-light);
+
+    height: 100px;
+    margin: auto;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+    padding: 0px 40px;
+}
+
+.filtro input {
+    border: 2px solid var(--color);
+    border-radius: 10px;
+    height: 40px;
+    padding: 0px 10px;
+    font-size: 0.9rem;
+}
+
+.filtro button {
+    background-color: var(--color);
+    color: var(--color-white);
+    border: none;
+    border-radius: 15px;
+    padding-top: 4px;
+    height: 40px;
+    width: 40px;
+}
+
+.filtro button img {
+    width: 20px;
+    height: 20px;
+}
+
+.filtro button:hover {
+    cursor: pointer;
+
+}
+
+.filtro input:focus {
+    outline: none;
+    border: 3px solid var(--color);
+}
+
+.clientes {
+    background-color: lime;
+    height: 800px;
+    width: 100%;
+}

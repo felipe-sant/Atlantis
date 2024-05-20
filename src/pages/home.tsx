@@ -41,36 +41,38 @@ export default function HomePage() {
     ]
 
     return (
-        <main className={css.main}>
+        <>
             <Navbar />
-            <Slider />
-            <section className={css.conteudo}>
-                <article className="funcionalidades">
-                    <h2>Funcionalidades do Site</h2>
-                    <div className={css.paragrafos}>
-                        <p>Nosso site simplifica o cadastro de clientes titulares e dependentes, facilitando o gerenciamento de dados pessoais e de contato.</p>
-                        <p>Com a funcionalidade de CRUD, é possivel facilmente <Link to="/clientes" className="span link">gerenciar clientes</Link>, atualizando informações e adicionando ou removendo dependentes conforme necessário.</p>
-                        <p>Além disso, nosso sistema oferece um recurso integrado de registro de hospedagem, agilizando o acompanhamento das estadias dos clientes.</p>
-                    </div>
-                </article>
-                <article>
-                    <h2>Nossas Hospedagens</h2>
-                    <div className={css.hospedagens}>
-                        {acomodacoes.map((acomodacao, index) => (
-                            <Acomodacao key={index} acomodacao={acomodacao} />
-                        ))}
-                    </div>
-                </article>
-                <article className={css.sobre}>
-                    <h2>Sobre nós</h2>
-                    <div className={css.paragrafos}>
-                        <p>
-                            A Ocean Solutions, especializada em desenvolvimento de software personalizado, orgulhosamente apresenta o projeto Atlantis. Concebido para atender às demandas específicas dos gerentes de parques aquáticos, o Atlantis oferece uma plataforma completa para otimizar todas as operações, desde a gestão de bilheteria até o controle de acesso e programação de eventos. Com ferramentas poderosas para gerenciar recursos humanos e analisar dados de visitantes, o Atlantis capacita parques aquáticos de todos os portes a alcançar novos patamares de eficiência e excelência na experiência do cliente.
-                        </p>
-                    </div>
-                </article>
-            </section>
+            <main className={css.main}>
+                <Slider />
+                <section className={css.conteudo}>
+                    <article className="funcionalidades">
+                        <h2>Funcionalidades do Site</h2>
+                        <div className={css.paragrafos}>
+                            <p>Nosso site simplifica o cadastro de clientes titulares e dependentes, facilitando o gerenciamento de dados pessoais e de contato.</p>
+                            <p>Com a funcionalidade de CRUD, é possivel facilmente <Link to="/clientes" className="span link">gerenciar clientes</Link>, atualizando informações e adicionando ou removendo dependentes conforme necessário.</p>
+                            <p>Além disso, nosso sistema oferece um recurso integrado de registro de hospedagem, agilizando o acompanhamento das estadias dos clientes.</p>
+                        </div>
+                    </article>
+                    <article>
+                        <h2>Nossas Hospedagens</h2>
+                        <div className={css.hospedagens}>
+                            {acomodacoes.map((acomodacao, index) => (
+                                <Acomodacao key={index} acomodacao={acomodacao} />
+                            ))}
+                        </div>
+                    </article>
+                    <article className={css.sobre}>
+                        <h2>Sobre nós</h2>
+                        <div className={css.paragrafos}>
+                            <p>
+                                A Ocean Solutions, especializada em desenvolvimento de software personalizado, orgulhosamente apresenta o projeto Atlantis. Concebido para atender às demandas específicas dos gerentes de parques aquáticos, o Atlantis oferece uma plataforma completa para otimizar todas as operações, desde a gestão de bilheteria até o controle de acesso e programação de eventos. Com ferramentas poderosas para gerenciar recursos humanos e analisar dados de visitantes, o Atlantis capacita parques aquáticos de todos os portes a alcançar novos patamares de eficiência e excelência na experiência do cliente.
+                            </p>
+                        </div>
+                    </article>
+                </section>
+            </main>
             <Footer />
-        </main>
+        </>
     );
 }
