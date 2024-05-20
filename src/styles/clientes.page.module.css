@@ -60,3 +60,31 @@
     height: 800px;
     width: 100%;
 }
+
+@media screen and (max-width: 768px) {
+    .conteudo {
+        padding: 20px 0px;
+    }
+
+    .filtro {
+        padding: 0px 20px;
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .filtro input {
+        font-size: 0.8rem;
+        max-width: 170px;
+        min-width: none;
+    }
+
+    .filtro button {
+        min-width: 40px
+    }
+}
+
+@media screen and (max-width: 500px){
+    .filtro {
+        gap: 10px;
+    }
+}
