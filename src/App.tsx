@@ -1,5 +1,6 @@
 import Router from "./router";
 import "./styles/globals.css";
+import "./styles/modal.css"
 import { register } from "swiper/element/bundle";
 import 'swiper/css'
 import 'swiper/css/navigation'

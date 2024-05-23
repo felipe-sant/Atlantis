@@ -18,7 +18,7 @@ export default function Navbar() {
     const testar = () => {
         teste += 1
         if (teste === 3) {
-            window.location.href = "dev/teste"
+            window.location.href = "/dev"
             // window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             teste = 0
         }

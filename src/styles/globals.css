@@ -11,8 +11,9 @@ html {
   --font-size: 1.25rem;
   --color: #a8f;
   --color_transparent: hsla(257, 100%, 77%, 0.5);
+  --color-gray: #7c7c7c;
   --color-light: #edf;
-  --color-dark: #206;
+  --color-dark: rgb(157, 119, 254);
   --color-black: #202020;
   --radius: 0.25rem;
   --color-white: #fff;
@@ -36,6 +37,10 @@ ul {
   font-family: var(--font);
 }
 
+ul {
+  list-style: none;
+}
+
 .link {
   color: #202020;
   text-decoration: none;
@@ -48,6 +53,10 @@ ul {
 
 .link:hover {
   text-decoration: underline;
+}
+
+.title {
+  font-weight: 600;
 }
 
 .text {
@@ -75,4 +84,9 @@ ul {
 
 .span {
     display: inline;
+}
+
+.required::after {
+    content: "*";
+    color: red;
 }

@@ -1,0 +1,190 @@
+.modal {
+    display: flex;
+    position: fixed;
+    z-index: 999999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.modal > div {
+    background-color: white;
+    border-radius: 10px;
+    margin: auto;
+    width: 600px;
+    padding: 20px;
+    border: 2px solid var(--color_transparent);
+}
+
+.modal_header {
+    border-bottom: 2px solid var(--color_transparent);
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal_body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modal_body .informacao {
+    padding: 10px;
+}
+
+.modal_body .lista {
+    padding: 15px;
+    margin-top: 5px;
+    border: 2px solid var(--color_transparent);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: none;
+    gap: 10px;
+    min-height: 90px;
+}
+
+.modal_body .lista.error {
+    border: 2px solid red;
+}
+
+.modal_body .lista > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal_body label {
+    margin-right: 5px;
+}
+
+.modal_body input.error {
+    border-bottom: 2px solid red;
+    color: red;
+}
+
+.modal_body input.ddd {
+    width: 30px;
+}
+
+.modal_body input.numero {
+    width: 90px;
+}
+
+.modal_body input.numeroDocumento {
+    width: 120px;
+}
+
+.modal_body input, select {
+    padding: 0px 5px;
+    height: 25px;
+    border: 2px solid transparent;
+    border-bottom: 2px solid #202020;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    transition: 0.2s ease-in-out;
+    font-size: 0.9rem;
+}
+
+.modal_body input:hover, select:hover {
+    cursor: pointer;
+    border: 2px solid #202020;
+}
+
+.modal_body button {
+    border-radius: 5px;
+    height: 20px;
+    width: 20px;
+    margin-left: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.modal_body button.addButton {
+    background-color: white;
+    border: 2px solid green;
+    color: green;
+    padding-top: 1px;
+}
+
+.modal_body button.addButton:hover {
+    background-color: green;
+    color: white;
+}
+
+.modal_body button.removeButton {
+    background-color: white;
+    border: 2px solid red;
+    color: red;
+    padding-bottom: 2px;
+}
+
+.modal_body button.removeButton:hover {
+    background-color: red;
+    color: white;
+}
+
+.modal_body .endereco {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.modal_body .documento .textos {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    width: 100%;
+}
+
+.modal_footer {
+    border-top: 2px solid var(--color_transparent);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.modal_footer button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    font-weight: 700;
+}
+
+.modal_footer button.salvar {
+    border: 2px solid green;
+    color: green;
+    background-color: white;
+}
+
+.modal_footer button.salvar:hover {
+    background-color: green;
+    color: white;
+}
+
+.modal_footer button.excluir {
+    border: 2px solid red;
+    color: red;
+    background-color: white;
+}
+
+.modal_footer button.excluir:hover {
+    background-color: red;
+    color: white;
+}
