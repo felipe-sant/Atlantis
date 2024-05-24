@@ -8,12 +8,13 @@ import Documento from "../models/documento"
 import Cliente from "../models/cliente"
 import { transformarData } from "../utils/transformarData"
 import { TipoDocumento } from "../enums/tipoDocumento"
-import ClienteDependente from "./clienteDependente"
+import Acomodacao from "../models/acomodacao"
 
 
 export default function ClienteTitular(props: ClienteTitularProps) {
     const tipoDocumentos = ["CPF", "RG", "Passaporte"]
     const listaTodosDependentes = [props.cliente, props.cliente, props.cliente]
+    const listaTodasAcomodacaoes = ["Solteiro Simples", "Solteiro Mais", "Casal Simples", "Familia Simples", "Familia Mais", "Familia Super"]
     const [show, setShow] = react.useState(false)
     let nome: string = props.cliente.Nome
     let nomeSocial: string = props.cliente.NomeSocial
@@ -50,6 +51,7 @@ export default function ClienteTitular(props: ClienteTitularProps) {
     const [nomeDependente, setNomeDependente] = react.useState<string>("")
     const [errorNomeDependente, setErrorNomeDependente] = react.useState<boolean>(false)
     const [dependentes, setDependentes] = react.useState<Cliente[]>(props.cliente.Dependentes)
+    const [acomodacao, setAcomodacao] = react.useState<Acomodacao | undefined>(props.cliente.Acomodacao)
     const modalShow = () => setShow(true)
     const modalClose = () => setShow(false)
 
@@ -574,6 +576,20 @@ export default function ClienteTitular(props: ClienteTitularProps) {
                                     )
                                 })}
                             </div>
+                        </div>
+
+                        <div className="informacao"> {/* Acomodação */}
+                            <label className="text title">Acomodacao:</label>
+                            <select>
+                                <option value=""></option>
+                                {
+                                    listaTodasAcomodacaoes.map((acomodacao, index) => {
+                                        return (
+                                            <option value={acomodacao} key={index}>{acomodacao}</option>
+                                        )
+                                    })
+                                }
+                            </select>
                         </div>
 
                     </Modal.Body>
