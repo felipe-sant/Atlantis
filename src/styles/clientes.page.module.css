@@ -22,7 +22,7 @@
     padding: 0px 40px;
 }
 
-.filtro input {
+.filtro input, .filtro select {
     border: 2px solid var(--color);
     border-radius: 10px;
     height: 40px;
@@ -50,7 +50,7 @@
 
 }
 
-.filtro input:focus {
+.filtro input:focus, .filtro select:focus {
     outline: none;
     border: 3px solid var(--color);
 }
@@ -75,7 +75,7 @@
         border-radius: 0;
     }
 
-    .filtro input {
+    .filtro input, .filtro select {
         font-size: 0.8rem;
         max-width: 170px;
         min-width: none;

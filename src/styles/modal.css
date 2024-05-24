@@ -84,7 +84,7 @@
     width: 120px;
 }
 
-.modal_body input, select {
+.modal_body input, .modal_body select {
     padding: 0px 5px;
     height: 25px;
     border: 2px solid transparent;
@@ -98,7 +98,7 @@
     font-size: 0.9rem;
 }
 
-.modal_body input:hover, select:hover {
+.modal_body input:hover, .modal_body select:hover {
     cursor: pointer;
     border: 2px solid #202020;
 }

@@ -9,6 +9,9 @@ import Telefone from "../models/telefone";
 import Endereco from "../models/endereco";
 import Documento from "../models/documento";
 import { TipoDocumento } from "../enums/tipoDocumento";
+import isDependente from "../utils/isDependente";
+import isTitular from "../utils/isTitular";
+import ClienteDependente from "../components/clienteDependente";
 
 export default function ClientesPage() {
     const [filtroNome, setFiltroNome] = useState<string>("")
@@ -21,7 +24,7 @@ export default function ClientesPage() {
         let telefone2 = new Telefone("11", "88888-8888")
         telefones.push(telefone1, telefone2)
 
-        let endereco = new Endereco("Rua tal", "bairro n sei oq", "São José dos Campos", "SP", "Brasil", "12200000")
+        let endereco = new Endereco("Rua tal", "bairro n sei oq", "São José dos Campos", "SP", "Brasil", "12200-000")
 
         let documentos:Documento[] = []
         let documento1 = new Documento("117.242.410-10", TipoDocumento.CPF, new Date("2021-01-01"))
@@ -30,9 +33,6 @@ export default function ClientesPage() {
         documentos.push(documento1, documento2, documento3)
 
         let dependentes: Cliente[] = []
-        let clienteDependente1:Cliente = new Cliente("Ciclano", "Ciclano de Tal", new Date())
-        let clienteDependente2:Cliente = new Cliente("Beltrano", "Beltrano de Tal", new Date())
-        dependentes.push(clienteDependente1, clienteDependente2)
 
         let clientes:Cliente[] = []
         let cliente:Cliente = new Cliente("Fulano", "Fulano de Tal", new Date())
@@ -40,8 +40,19 @@ export default function ClientesPage() {
         cliente.Telefones = telefones
         cliente.Endereco = endereco
         cliente.Documentos = documentos
+
+        let clienteDependente: Cliente = new Cliente("beltrano", "beltrano de tal", new Date())
+        clienteDependente.DataNascimento = new Date("2004-05-23")
+        clienteDependente.Telefones = cliente.Telefones
+        clienteDependente.Endereco = cliente.Endereco
+        clienteDependente.Documentos = documentos
+
+        clienteDependente.Titular = cliente
+        dependentes.push(clienteDependente)
         cliente.Dependentes = dependentes
-        clientes.push(cliente)
+
+        clientes.push(cliente, clienteDependente)
+
         setClientes(clientes)
     }, [])
 
@@ -87,6 +98,13 @@ export default function ClientesPage() {
                             value={filtroCpf}
                             onChange={handleFiltroCpf}
                         />
+                        <select
+                        >
+                            <option value=""></option>
+                            <option value="">Titular</option>
+                            <option value="">Dependente</option>
+                        </select>
+
                         <button
                             onClick={buscarClientes}
                         >
@@ -96,7 +114,13 @@ export default function ClientesPage() {
                     <div className={css.clientes}>
                         {
                             clientes.map((cliente, index) => {
-                                return <ClienteTitular key={index} cliente={cliente} />
+                                if (isDependente(cliente)) {
+                                    return <ClienteDependente key={index} cliente={cliente} />
+                                }
+                                if (isTitular(cliente)) {
+                                    return <ClienteTitular key={index} cliente={cliente} />
+                                }
+                                return <></>
                             })
                         }
                     </div>

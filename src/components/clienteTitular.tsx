@@ -8,6 +8,7 @@ import Documento from "../models/documento"
 import Cliente from "../models/cliente"
 import { transformarData } from "../utils/transformarData"
 import { TipoDocumento } from "../enums/tipoDocumento"
+import ClienteDependente from "./clienteDependente"
 
 
 export default function ClienteTitular(props: ClienteTitularProps) {
@@ -16,7 +17,6 @@ export default function ClienteTitular(props: ClienteTitularProps) {
     const [show, setShow] = react.useState(false)
     let nome: string = props.cliente.Nome
     let nomeSocial: string = props.cliente.NomeSocial
-    let dataCadastro: string = props.cliente.DataCadastro.toLocaleDateString()
     const [dataNascimento, setDataNascimento] = react.useState<string>(transformarData(props.cliente.DataNascimento))
     const [errorDataNascimento, setErrorDataNascimento] = react.useState<boolean>(false)
     const [ddd, setDdd] = react.useState<string>("")
@@ -25,7 +25,7 @@ export default function ClienteTitular(props: ClienteTitularProps) {
     const [errorNumero, setErrorNumero] = react.useState<boolean>(false)
     const [telefones, setTelefones] = react.useState<Telefone[]>(props.cliente.Telefones)
     const [errorTelefones, setErrorTelefones] = react.useState<boolean>(false)
-    const [endereco, setEndereco] = react.useState<Endereco>(props.cliente.Endereco)
+    const [endereco] = react.useState<Endereco>(props.cliente.Endereco)
     const [rua, setRua] = react.useState<string>(endereco.Rua)
     const [errorRua, setErrorRua] = react.useState<boolean>(false)
     const [bairro, setBairro] = react.useState<string>(endereco.Bairro)
@@ -47,7 +47,7 @@ export default function ClienteTitular(props: ClienteTitularProps) {
     const [errorNumeroDocumento, setErrorNumeroDocumento] = react.useState<boolean>(false)
     const [dataExpedicao, setDataExpedicao] = react.useState<string>("")
     const [errorDataExpedicao, setErrorDataExpedicao] = react.useState<boolean>(false)
-    const [nomeDependente, setFiltroNome] = react.useState<string>("")
+    const [nomeDependente, setNomeDependente] = react.useState<string>("")
     const [errorNomeDependente, setErrorNomeDependente] = react.useState<boolean>(false)
     const [dependentes, setDependentes] = react.useState<Cliente[]>(props.cliente.Dependentes)
     const modalShow = () => setShow(true)
@@ -118,7 +118,6 @@ export default function ClienteTitular(props: ClienteTitularProps) {
         if (documentos.length > 0) {
             let cpf = false
             let rg = false
-            let passaporte = false
             for (let i = 0; i < documentos.length; i++) {
                 if (documentos[i].Tipo === TipoDocumento.CPF) {
                     cpf = true
@@ -229,7 +228,7 @@ export default function ClienteTitular(props: ClienteTitularProps) {
 
     function handleDependente(e: react.ChangeEvent<HTMLSelectElement>) {
         limparErros()
-        setFiltroNome(e.target.value)
+        setNomeDependente(e.target.value)
     }
 
     function adicionarTelefone() {
@@ -363,11 +362,8 @@ export default function ClienteTitular(props: ClienteTitularProps) {
                         <h3>{nomeSocial}</h3>
                     </div>
                     <div className={css.dataCadastro}>
-                        <span className="text">{dataCadastro}</span>
+                        <span className="text">Titular</span>
                     </div>
-                </div>
-                <div className={css.dependentes}>
-
                 </div>
             </div>
             <Modal
