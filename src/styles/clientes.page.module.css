@@ -43,11 +43,12 @@
 .filtro button img {
     width: 20px;
     height: 20px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
 }
 
 .filtro button:hover {
-    cursor: pointer;
-
+    background-color: var(--color-dark);
 }
 
 .filtro input:focus, .filtro select:focus {
@@ -62,6 +63,29 @@
     align-items: center;
     gap: 40px;
     padding: 20px;
+}
+
+.addCliente  {
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.addCliente button {
+    padding: 0 20px;
+    height: 50px;
+    background-color: var(--color);
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+.addCliente button:hover {
+    background-color: var(--color-dark);
 }
 
 @media screen and (max-width: 768px) {

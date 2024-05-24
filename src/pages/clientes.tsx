@@ -80,6 +80,10 @@ export default function ClientesPage() {
         setFiltroCpf(cpf)
     }
 
+    const redirecionarCliente = () => {
+        window.location.assign("/clientes/cadastrar")
+    }
+
     return (
         <>
             <Navbar />
@@ -112,6 +116,9 @@ export default function ClientesPage() {
                         </button>
                     </div>
                     <div className={css.clientes}>
+                        <div className={css.addCliente}>
+                            <button onClick={redirecionarCliente} className="text">Cadastrar Cliente</button>
+                        </div>
                         {
                             clientes.map((cliente, index) => {
                                 if (isDependente(cliente)) {
