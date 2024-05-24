@@ -5,36 +5,42 @@ import css from "../styles/home.page.module.css"
 import { acomodacao } from "../types/acomodacao";
 import Acomodacao from "../components/acomodacao";
 import Footer from "../components/footer";
+import solteiroSimples from "../images/solteiroSimples.jpg"
+import solteiroMais from "../images/solteiroMais.jpg"
+import casalSimples from "../images/casalSimples.jpg"
+import familiaSimples from "../images/familiaSimples.jpg"
+import familiaMais from "../images/familiaMais.jpg"
+import familiaSuper from "../images/familiaSuper.jpg"
 
 export default function HomePage() {
     const acomodacoes: acomodacao[] = [
         {
-            imagem: 'https://placehold.co/250x300',
+            imagem: solteiroSimples,
             titulo: 'Solteiro Simples',
             descricao: 'Acomodação simples para solteiro(a).'
         },
         {
-            imagem: 'https://placehold.co/250x300',
+            imagem: solteiroMais,
             titulo: 'Solteiro Mais',
             descricao: 'Acomodação com garagem para solteiro(a).'
         },
         {
-            imagem: 'https://placehold.co/250x300',
+            imagem: casalSimples,
             titulo: 'Casal Simples',
             descricao: 'Acomodação simples para casal.'
         },
         {
-            imagem: 'https://placehold.co/250x300',
+            imagem: familiaSimples,
             titulo: 'Famila Simples',
             descricao: 'Acomodação para família com até duas crianças.'
         },
         {
-            imagem: 'https://placehold.co/250x300',
+            imagem: familiaMais,
             titulo: 'Familia Mais',
             descricao: 'Acomodação para família com até cinco crianças.'
         },
         {
-            imagem: 'https://placehold.co/250x300',
+            imagem: familiaSuper,
             titulo: 'Familia Super',
             descricao: 'Acomodação para até duas familias, casal e três crianças cada.'
         },

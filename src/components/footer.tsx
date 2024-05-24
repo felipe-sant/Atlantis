@@ -10,7 +10,7 @@ export default function Footer() {
         <footer className={css.footer}>
             <div className={css.copyright}>
                 <h2>Ocean Solutions</h2>
-                <p>© 2021 Atlantis. Todos os direitos reservados.</p>
+                <p>© 2024 Atlantis. Todos os direitos reservados.</p>
             </div>
             <div className={css.contatos}>
                 <div>
