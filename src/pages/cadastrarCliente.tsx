@@ -51,12 +51,15 @@ export default function CadastrarClientePage() {
     }
 
     function limparErros() {
+        setErrorNome(false)
+        setErrorDocumentos(false)
         setErrorNumeroDocumento(false)
         setErrorDataExpedicao(false)
     }
 
     function verificarCamposRequired(): boolean {
         if (nome === "") {
+            setErrorNome(true)
             return false
         }
 
@@ -64,6 +67,11 @@ export default function CadastrarClientePage() {
     }
 
     /* Handlechange */
+
+    const handleNome = (e: React.ChangeEvent<HTMLInputElement>) => {
+        limparErros()
+        setNome(e.target.value)
+    }
 
     const handleTipoDocumento = (e: React.ChangeEvent<HTMLSelectElement>) => {
         limparErros()
@@ -186,6 +194,7 @@ export default function CadastrarClientePage() {
 
     function cadastrar() {
         console.log("cadastrando novo cliente")
+        console.log(nome)
     }
 
     return (
@@ -204,6 +213,8 @@ export default function CadastrarClientePage() {
                                 className="text"
                                 type="text"
                                 placeholder="Nome do Cliente"
+                                value={nome}
+                                onChange={handleNome}
                             />
                         </div>
 

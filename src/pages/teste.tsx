@@ -1,12 +1,23 @@
-import ClienteTitular from "../components/clienteTitular"
-import Cliente from "../models/cliente"
-
-
 export default function TestePage() {
-    let cliente:Cliente = new Cliente("Fulano", "Fulano da Silva", new Date())
     return (
         <>
-            <ClienteTitular cliente={cliente} />
+            <main style={{margin: "0px", height: "100vh", padding: "10px", background: "#202020", color: "white"}}>
+                ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠄⠄⠈⠁⠘⢿⣿⣿⣿⣿⣿⡛⠉⣉⣁⣠⣽ <br />
+                ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣿⣾⡄⠄⡀⠈⣉⠻⣿⣿⣿⣿⣟⣛⣋⣩ <br />
+                ⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⠛⠻⢿⣿⣿⡿⣰⣿⣿⣿⣿⣷⣸⣿⣿⣿⣿⣿⣭⣭ <br />
+                ⣿⣿⣿⣿⣿⣿⠋⠄⠄⠄⠄⠄⠄⠄⠄⠄⣿⠟⠉⢹⣏⢑⣿⣿⣿⣿⣿⣿⣿⣿ <br />
+                ⣿⣿⣿⣿⣿⡟⠄⢰⣿⣶⣶⣤⣶⡄⠄⢀⣿⣶⣶⠚⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿ <br />
+                ⣿⣿⣿⣿⣿⣧⠄⡼⠛⠛⢻⡿⠛⠃⠄⠐⢿⠄⠈⠄⣭⣯⣿⣿⣿⣿⣿⣿⣿⣿ <br />
+                ⠛⠛⠿⣿⣿⣿⣦⣦⣤⣀⣴⣤⣀⢀⠄⠠⡄⣄⠄⠄⠈⣽⣿⣿⡿⠿⡿⠛⠻⠿ <br />
+                ⠄⠄⠄⣬⣿⠋⠿⣿⣿⣿⣟⣻⣿⣿⠄⠄⠄⠄⠹⣶⣷⣿⡏⠛⠄⠄⠄⠄⣴⠿ <br />
+                ⠄⠄⠄⢹⣿⣄⣠⣿⡏⠤⠄⠄⠉⠄⠄⠄⠄⠄⠄⠈⢋⠄⠄⠄⠄⠄⠄⠐⠳⠶ <br />
+                ⡀⠄⠄⢀⣿⡜⡿⠄⠈⠛⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠁⠄⢂⠄⠄⠄⠄⠄⠄ <br />
+                ⣷⣴⣾⣿⣿⣿⣀⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄ <br />
+                ⣿⣿⣿⣿⣿⣿⣿⣷⣶⣾⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⢀⠄⠄⠄⠄ <br />
+                ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄ <br />
+                ⣿⣿⢻⣿⣿⣿⣿⣿⣿⣿⡇⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄ <br /> 
+                ⣿⣿⢠⣿⢿⣿⣿⣿⡟⠟⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
+            </main>
         </>
     )
 }
