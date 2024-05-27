@@ -51,7 +51,7 @@ export default function ClienteTitular(props: ClienteTitularProps) {
     const [nomeDependente, setNomeDependente] = react.useState<string>("")
     const [errorNomeDependente, setErrorNomeDependente] = react.useState<boolean>(false)
     const [dependentes, setDependentes] = react.useState<Cliente[]>(props.cliente.Dependentes)
-    const [acomodacao, setAcomodacao] = react.useState<Acomodacao | undefined>(props.cliente.Acomodacao)
+    // const [acomodacao, setAcomodacao] = react.useState<Acomodacao | undefined>(props.cliente.Acomodacao)
     const modalShow = () => setShow(true)
     const modalClose = () => setShow(false)
 

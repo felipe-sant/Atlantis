@@ -16,10 +16,11 @@
 
 .campos {
     padding: 10px;
+    padding-bottom: 80px;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
-    gap: 30px;
+    gap: 50px;
 }
 
 .campos input,
@@ -37,15 +38,85 @@
 }
 
 .campos select option {
-    
+    color: #202020;
+}
+
+.campos select option:nth-child(1) {
+    color: #bbb;
+}
+
+.selectVazio {
+    color: #bbb;
 }
 
 .campo {
-    width: 350px;
+    width: 500px;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    gap: 5px;
+    gap: 10px;
+}
+
+.campo button {
+    width: 24px;
+    height: 24px;
+    align-self: flex-end;
+    background-color: transparent;
+    border: 2px solid var(--color);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-dark);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+.campo button.addButton {
+    border: 2px solid green;
+    color: green;
+}
+
+.campo button.addButton:hover {
+    background-color: green;
+}
+
+.campo button.removeButton {
+    border: 2px solid red;
+    color: red;
+}
+
+.campo button.removeButton:hover {
+    background-color: red;
+}
+
+.campo button:hover {
+    background-color: var(--color);
+    color: white;
+}
+
+.campo .visualizar {
+    margin-top: 5px;
+    padding: 15px;
+    border: 2px solid #bbb;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: none;
+    gap: 10px;
+    min-height: 90px;
+}
+
+.visualizar>div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.visualizar .documento .textos {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    width: 100%;
 }
 
 .botoes {
@@ -77,4 +148,8 @@
 
 .botoes button.cadastrar:hover {
     background-color: var(--color-dark);
+}
+
+.errorInput {
+    border-bottom: 2px solid red !important;
 }

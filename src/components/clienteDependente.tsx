@@ -1,6 +1,6 @@
 import { ClienteDependenteProps } from "../types/clienteDependenteProps";
 import css from "../styles/clienteDependente.component.module.css"
-import react, { useState } from "react";
+import react from "react";
 import { Modal } from "react-bootstrap";
 import { transformarData } from "../utils/transformarData";
 import Documento from "../models/documento";
