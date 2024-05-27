@@ -73,6 +73,14 @@ export default function CadastrarClientePage() {
             return false
         }
 
+        if (documentos.length === 0) {
+            setErrorDocumentos(true)
+            console.log("erro documentos")
+            console.log(errorDocumentos)
+            focusDocumentos()
+            return false
+        }
+
         return true
     }
 
@@ -85,6 +93,11 @@ export default function CadastrarClientePage() {
 
     function focusDataNascimento() {
         const input = document.getElementById("dataNascimento")
+        if (input) input.focus()
+    }
+
+    function focusDocumentos() {
+        const input = document.getElementById("tipoDocumento")
         if (input) input.focus()
     }
 
@@ -280,11 +293,12 @@ export default function CadastrarClientePage() {
                         <div className={form.campo}> {/* Documentos */}
                             <label className="text title required">Documentos</label>
                             <select
+                                id="tipoDocumento"
                                 className={nullTipoDocumento ? form.selectVazio + " text" : "text"}
                                 value={tipoDocumento}
                                 onChange={handleTipoDocumento}
                             >
-                                <option value="">- Nenhum documento selecionado</option>
+                                <option value="">- Nenhum documento selecionado -</option>
                                 <option value="cpf">CPF</option>
                                 <option value="rg">RG</option>
                                 <option value="passaporte">Passaporte</option>
@@ -353,12 +367,12 @@ export default function CadastrarClientePage() {
                                 )
                             }
 
-                            <div className={form.visualizar}>
+                            <div className={errorDocumentos ? form.errorDiv + " " + form.visualizar : form.visualizar}>
                                 {
                                     documentos.map((documento, index) => {
                                         return (
-                                            <div className={form.documento}>
-                                                <div className={form.textos} key={index}>
+                                            <div className={form.documento} key={index}>
+                                                <div className={form.textos}>
                                                     <div className="text">{documento.Tipo}</div>
                                                     <div className="text">{documento.Numero}</div>
                                                     <div className="text">{documento.DataExpedicao.toLocaleDateString()}</div>

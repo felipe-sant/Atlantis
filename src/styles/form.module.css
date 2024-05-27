@@ -152,3 +152,7 @@
 .errorInput {
     border-bottom: 2px solid red !important;
 }
+
+.errorDiv {
+    border: 2px solid red !important;
+}
