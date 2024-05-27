@@ -14,6 +14,10 @@ export default function CadastrarClientePage() {
         new Cliente("yzabella luiza", "", new Date())
     ]
 
+    const [nome, setNome] = useState<string>("")
+    const [errorNome, setErrorNome] = useState<boolean>(false)
+    const [nomeSocial, setNomeSocial] = useState<string>("")
+
     const [documentos, setDocumentos] = useState<Documento[]>([])
     const [errorDocumentos, setErrorDocumentos] = useState<boolean>(false)
     const [tipoDocumento, setTipoDocumento] = useState<string>("")
@@ -39,6 +43,7 @@ export default function CadastrarClientePage() {
 
     function limparCamposDocumentos() {
         setTipoDocumento("")
+        setNullTipoDocumento(true)
         setNumeroDocumentoCPF("")
         setNumeroDocumentoRG("")
         setNumeroDocumentoPassaporte("")
@@ -50,10 +55,19 @@ export default function CadastrarClientePage() {
         setErrorDataExpedicao(false)
     }
 
+    function verificarCamposRequired(): boolean {
+        if (nome === "") {
+            return false
+        }
+
+        return true
+    }
+
     /* Handlechange */
 
     const handleTipoDocumento = (e: React.ChangeEvent<HTMLSelectElement>) => {
         limparErros()
+        limparCamposDocumentos()
         if (e.target.value === "") {
             setNullTipoDocumento(true)
         } else {
@@ -305,7 +319,7 @@ export default function CadastrarClientePage() {
                             </div>
                         </div>
 
-                        <div className={form.campo}>
+                        <div className={form.campo}> {/* Tipo do cliente */}
                             <label className="text title required">Tipo de Cliente</label>
                             <select
                                 className={nullTipoCliente ? form.selectVazio + " text" : "text"}
@@ -317,6 +331,12 @@ export default function CadastrarClientePage() {
                                 <option value="titular">Títular</option>
                             </select>
                         </div>
+
+                        {
+                            tipoCliente === "titular" && (
+                                <></>
+                            )
+                        }
 
                         {
                             tipoCliente === "dependente" && (
@@ -335,12 +355,6 @@ export default function CadastrarClientePage() {
                                         }
                                     </select>
                                 </div>
-                            )
-                        }
-
-                        {
-                            tipoCliente === "titular" && (
-                                <></>
                             )
                         }
 
