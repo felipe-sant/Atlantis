@@ -6,6 +6,7 @@ import form from "../styles/form.module.css"
 import Cliente from "../models/cliente";
 import Documento from "../models/documento";
 import { TipoDocumento } from "../enums/tipoDocumento";
+import Telefone from "../models/telefone";
 
 export default function CadastrarClientePage() {
     const listaTitulares: Cliente[] = [
@@ -33,14 +34,29 @@ export default function CadastrarClientePage() {
 
     const [tipoCliente, setTipoCliente] = useState<string>("")
     const [nullTipoCliente, setNullTipoCliente] = useState<boolean>(true)
+    const [errorTipoCliente, setErrorTipoCliente] = useState<boolean>(false)
 
     const [titular, setTitular] = useState<string>("")
     const [nullTitular, setNullTitular] = useState<boolean>(true)
+    const [errorTitular, setErrorTitular] = useState<boolean>(false)
+
+    const [telefone, setTelefone] = useState<string>("")
+    const [errorTelefone, setErrorTelefone] = useState<boolean>(false)
+    const [telefones, setTelefones] = useState<Telefone[]>([])
+    const [errorTelefones, setErrorTelefones] = useState<boolean>(false)
 
     /* Utils */
 
     function limparCampos() {
+        setNome("")
+        setNomeSocial("")
+        setDataNascimento("")
         limparCamposDocumentos()
+        setDocumentos([])
+        setTipoCliente("")
+        limparCamposTitular()
+        limparCamposDependente()
+        setTelefones([])
     }
 
     function limparCamposDocumentos() {
@@ -52,12 +68,24 @@ export default function CadastrarClientePage() {
         setDataExpedicaoDocumento("")
     }
 
+    function limparCamposTitular() {
+        setTitular("")
+    }
+
+    function limparCamposDependente() {
+        setTelefone("")
+    }
+
     function limparErros() {
         setErrorNome(false)
         setErrorDataNascimento(false)
         setErrorDocumentos(false)
         setErrorNumeroDocumento(false)
         setErrorDataExpedicao(false)
+        setErrorTipoCliente(false)
+        setErrorTitular(false)
+        setErrorTelefone(false)
+        setErrorTelefones(false)
     }
 
     function verificarCamposRequired(): boolean {
@@ -75,9 +103,25 @@ export default function CadastrarClientePage() {
 
         if (documentos.length === 0) {
             setErrorDocumentos(true)
-            console.log("erro documentos")
-            console.log(errorDocumentos)
             focusDocumentos()
+            return false
+        }
+
+        if (tipoCliente === "") {
+            setErrorTipoCliente(true)
+            focusTipoCliente()
+            return false
+        }
+
+        if (tipoCliente === "dependente" && titular === "") {
+            setErrorTitular(true)
+            focusTitular()
+            return false
+        }
+
+        if (tipoCliente === "titular" && telefones.length === 0) {
+            setErrorTelefones(true)
+            focusTelefone()
             return false
         }
 
@@ -98,6 +142,21 @@ export default function CadastrarClientePage() {
 
     function focusDocumentos() {
         const input = document.getElementById("tipoDocumento")
+        if (input) input.focus()
+    }
+
+    function focusTipoCliente() {
+        const input = document.getElementById("tipoCliente")
+        if (input) input.focus()
+    }
+
+    function focusTitular() {
+        const input = document.getElementById("titular")
+        if (input) input.focus()
+    }
+
+    function focusTelefone() {
+        const input = document.getElementById("telefone")
         if (input) input.focus()
     }
 
@@ -179,6 +238,77 @@ export default function CadastrarClientePage() {
         setTitular(e.target.value)
     }
 
+    const handleTelefone = (e: React.ChangeEvent<HTMLInputElement>) => {
+        limparErros()
+        let numero = e.target.value
+        numero = numero.replace(/\D/g, "")
+        numero = numero.replace(/(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3")
+        if (numero.length > 15) return
+        setTelefone(numero)
+    }
+
+    /* class condicional */
+
+    function classErrorNome(): string {
+        return errorNome ? form.errorInput + " text" : "text"
+    }
+
+    function classErrorDataNascimento(): string {
+        return errorDataNascimento ? form.errorInput + " text" : "text"
+    }
+
+    function classErrorNumeroDocumento(): string {
+        return errorNumeroDocumento ? form.errorInput + " text" : "text"
+    }
+
+    function classErrorDataExpedicao(): string {
+        return errorDataExpedicao ? form.errorInput + " text" : "text"
+    }
+
+    function classErrorDocumentos(): string {
+        return errorDocumentos ? form.errorDiv + " " + form.visualizar : form.visualizar
+    }
+
+    function classTipoCliente(): string {
+        if (nullTipoCliente === true && errorTipoCliente === true) {
+            return form.selectVazio + " text " + form.errorInput
+        }
+
+        if (nullTipoCliente === true && errorTipoCliente === false) {
+            return form.selectVazio + " text"
+        }
+
+        if (nullTipoCliente === false && errorTipoCliente === true) {
+            return "text " + form.errorInput
+        }
+
+        return "text"
+    }
+
+    function classTitular(): string {
+        if (nullTitular === true && errorTitular === true) {
+            return form.selectVazio + " text " + form.errorInput
+        }
+
+        if (nullTitular === true && errorTitular === false) {
+            return form.selectVazio + " text"
+        }
+
+        if (nullTitular === false && errorTitular === true) {
+            return "text " + form.errorInput
+        }
+
+        return "text"
+    }
+
+    function classErrorTelefone(): string {
+        return errorTelefone && tipoCliente === "titular" ? form.errorInput + " text" : "text"
+    }
+
+    function classErrorTelefones(): string {
+        return errorTelefones && tipoCliente === "titular" ? form.errorDiv + " " + form.visualizar : form.visualizar
+    }
+
     /* funcoes finais */
 
     function adicionarDocumento() {
@@ -237,12 +367,47 @@ export default function CadastrarClientePage() {
         setDocumentos([...documentosAtualizados])
     }
 
+    function adicionarTelefone() {
+        if (telefone === "") {
+            setErrorTelefone(true)
+            return
+        }
+
+        let ddd = telefone.substring(1, 3)
+        let numero = telefone.substring(5)
+
+        const novoTelefone = new Telefone(ddd, numero)
+        setTelefones([...telefones, novoTelefone])
+        setTelefone("")
+    }
+
+    function removerTelefone(telefone: Telefone) {
+        let index = telefones.indexOf(telefone)
+        let telefonesAtualizados = telefones
+        telefonesAtualizados.splice(index, 1)
+        setTelefones([...telefonesAtualizados])
+    }
+
     function cadastrar() {
         if (verificarCamposRequired() === false) return
         console.log("cadastrando novo cliente")
         console.log("nome: " + nome)
         console.log("nome social: " + nomeSocial)
         console.log("data de nascimento: " + dataNascimento)
+        console.log("documentos: ")
+        documentos.forEach(documento => {
+            console.log("tipo: " + documento.Tipo + " numero: " + documento.Numero + " data: " + documento.DataExpedicao)
+        })
+        console.log("tipo de cliente: " + tipoCliente)
+        if (tipoCliente === "dependente") {
+            console.log("titular: " + titular)
+        }
+        if (tipoCliente === "titular") {
+            console.log("telefones: ")
+            telefones.forEach(telefone => {
+                console.log("ddd: " + telefone.Ddd + " numero: " + telefone.Numero)
+            })
+        }
     }
 
     return (
@@ -259,7 +424,7 @@ export default function CadastrarClientePage() {
                             <label className="text title required">Nome:</label>
                             <input
                                 id = "nome"
-                                className={errorNome ? form.errorInput + " text" : "text"}
+                                className={classErrorNome()}
                                 type="text"
                                 placeholder="Nome do Cliente"
                                 value={nome}
@@ -282,7 +447,7 @@ export default function CadastrarClientePage() {
                             <label className="text title required">Data de Nascimento:</label>
                             <input
                                 id = "dataNascimento"
-                                className={errorDataNascimento ? form.errorInput + " text" : "text"}
+                                className={classErrorDataNascimento()}
                                 type="date"
                                 placeholder="Nome do Cliente"
                                 value={dataNascimento}
@@ -308,14 +473,14 @@ export default function CadastrarClientePage() {
                                 tipoDocumento === "cpf" && (
                                     <>
                                         <input
-                                            className={errorNumeroDocumento ? form.errorInput + " text" : "text"}
+                                            className={classErrorNumeroDocumento()}
                                             type="text"
                                             placeholder="000.000.000-00"
                                             onChange={handleNumeroDocumentoCPF}
                                             value={numeroDocumentoCPF}
                                         />
                                         <input
-                                            className={errorDataExpedicao ? form.errorInput + " text" : "text"}
+                                            className={classErrorNumeroDocumento()}
                                             type="date"
                                             onChange={handleDataExpericaoDocumento}
                                             value={dataExpedicaoDocumento}
@@ -329,14 +494,14 @@ export default function CadastrarClientePage() {
                                 tipoDocumento === "rg" && (
                                     <>
                                         <input
-                                            className={errorNumeroDocumento ? form.errorInput + " text" : "text"}
+                                            className={classErrorNumeroDocumento()}
                                             type="text"
                                             placeholder="00.000.000-0"
                                             onChange={handleNumeroDocumentoRG}
                                             value={numeroDocumentoRG}
                                         />
                                         <input
-                                            className={errorDataExpedicao ? form.errorInput + " text" : "text"}
+                                            className={classErrorNumeroDocumento()}
                                             type="date"
                                             onChange={handleDataExpericaoDocumento}
                                             value={dataExpedicaoDocumento}
@@ -350,14 +515,14 @@ export default function CadastrarClientePage() {
                                 tipoDocumento === "passaporte" && (
                                     <>
                                         <input
-                                            className={errorNumeroDocumento ? form.errorInput + " text" : "text"}
+                                            className={classErrorNumeroDocumento()}
                                             type="text"
                                             placeholder="000000000"
                                             onChange={handleNumeroDocumentoPassaporte}
                                             value={numeroDocumentoPassaporte}
                                         />
                                         <input
-                                            className={errorDataExpedicao ? form.errorInput + " text" : "text"}
+                                            className={classErrorDataExpedicao()}
                                             type="date"
                                             onChange={handleDataExpericaoDocumento}
                                             value={dataExpedicaoDocumento}
@@ -367,7 +532,7 @@ export default function CadastrarClientePage() {
                                 )
                             }
 
-                            <div className={errorDocumentos ? form.errorDiv + " " + form.visualizar : form.visualizar}>
+                            <div className={classErrorDocumentos()}>
                                 {
                                     documentos.map((documento, index) => {
                                         return (
@@ -388,7 +553,8 @@ export default function CadastrarClientePage() {
                         <div className={form.campo}> {/* Tipo do cliente */}
                             <label className="text title required">Tipo de Cliente</label>
                             <select
-                                className={nullTipoCliente ? form.selectVazio + " text" : "text"}
+                                id = "tipoCliente"
+                                className={classTipoCliente()}
                                 value={tipoCliente}
                                 onChange={handleTipoCliente}
                             >
@@ -400,7 +566,40 @@ export default function CadastrarClientePage() {
 
                         {
                             tipoCliente === "titular" && (
-                                <></>
+                                <>
+                                    <div className={form.campo}>
+                                        <label className="text title required">Telefones</label>
+                                        <input 
+                                            id = "telefone"
+                                            className={classErrorTelefone()}
+                                            type="text"
+                                            placeholder="00 00000-0000"
+                                            value={telefone}
+                                            onChange={handleTelefone}
+                                        />
+                                        <button 
+                                            className={form.addButton}
+                                            onClick={adicionarTelefone}
+                                        >+</button>
+                                        <div className={classErrorTelefones()}>
+                                            {
+                                                telefones.map((telefone, index) => {
+                                                    return (
+                                                        <div className={form.documento} key={index}>
+                                                            <div className={form.textos}>
+                                                                <div className="text">({telefone.Ddd}) {telefone.Numero}</div>
+                                                            </div>
+                                                            <button 
+                                                                className={form.removeButton}
+                                                                onClick={() => removerTelefone(telefone)}
+                                                            >-</button>
+                                                        </div>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                    </div>
+                                </>
                             )
                         }
 
@@ -409,7 +608,8 @@ export default function CadastrarClientePage() {
                                 <div className={form.campo}>
                                     <label className="text title required">Titular</label>
                                     <select
-                                        className={nullTitular ? form.selectVazio + " text" : "text"}
+                                        id = "titular"
+                                        className={classTitular()}
                                         value={titular}
                                         onChange={handleTitular}
                                     >
