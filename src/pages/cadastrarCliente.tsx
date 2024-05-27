@@ -17,6 +17,8 @@ export default function CadastrarClientePage() {
     const [nome, setNome] = useState<string>("")
     const [errorNome, setErrorNome] = useState<boolean>(false)
     const [nomeSocial, setNomeSocial] = useState<string>("")
+    const [dataNascimento, setDataNascimento] = useState<string>("")
+    const [errorDataNascimento, setErrorDataNascimento] = useState<boolean>(false)
 
     const [documentos, setDocumentos] = useState<Documento[]>([])
     const [errorDocumentos, setErrorDocumentos] = useState<boolean>(false)
@@ -52,6 +54,7 @@ export default function CadastrarClientePage() {
 
     function limparErros() {
         setErrorNome(false)
+        setErrorDataNascimento(false)
         setErrorDocumentos(false)
         setErrorNumeroDocumento(false)
         setErrorDataExpedicao(false)
@@ -60,10 +63,29 @@ export default function CadastrarClientePage() {
     function verificarCamposRequired(): boolean {
         if (nome === "") {
             setErrorNome(true)
+            focusNome()
+            return false
+        }
+
+        if (dataNascimento === "") {
+            setErrorDataNascimento(true)
+            focusDataNascimento()
             return false
         }
 
         return true
+    }
+
+    /* Focus */
+
+    function focusNome() {
+        const input = document.getElementById("nome")
+        if (input) input.focus()
+    }
+
+    function focusDataNascimento() {
+        const input = document.getElementById("dataNascimento")
+        if (input) input.focus()
     }
 
     /* Handlechange */
@@ -71,6 +93,16 @@ export default function CadastrarClientePage() {
     const handleNome = (e: React.ChangeEvent<HTMLInputElement>) => {
         limparErros()
         setNome(e.target.value)
+    }
+
+    const handleNomeSocial = (e: React.ChangeEvent<HTMLInputElement>) => {
+        limparErros()
+        setNomeSocial(e.target.value)
+    }
+
+    const handleDataNascimento = (e: React.ChangeEvent<HTMLInputElement>) => {
+        limparErros()
+        setDataNascimento(e.target.value)
     }
 
     const handleTipoDocumento = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -193,8 +225,11 @@ export default function CadastrarClientePage() {
     }
 
     function cadastrar() {
+        if (verificarCamposRequired() === false) return
         console.log("cadastrando novo cliente")
-        console.log(nome)
+        console.log("nome: " + nome)
+        console.log("nome social: " + nomeSocial)
+        console.log("data de nascimento: " + dataNascimento)
     }
 
     return (
@@ -210,7 +245,8 @@ export default function CadastrarClientePage() {
                         <div className={form.campo}> {/* Nome */}
                             <label className="text title required">Nome:</label>
                             <input
-                                className="text"
+                                id = "nome"
+                                className={errorNome ? form.errorInput + " text" : "text"}
                                 type="text"
                                 placeholder="Nome do Cliente"
                                 value={nome}
@@ -224,15 +260,20 @@ export default function CadastrarClientePage() {
                                 className="text"
                                 type="text"
                                 placeholder="Nome do Cliente"
+                                value={nomeSocial}
+                                onChange={handleNomeSocial}
                             />
                         </div>
 
                         <div className={form.campo}> {/* Data de nascimento */}
                             <label className="text title required">Data de Nascimento:</label>
                             <input
-                                className="text"
+                                id = "dataNascimento"
+                                className={errorDataNascimento ? form.errorInput + " text" : "text"}
                                 type="date"
                                 placeholder="Nome do Cliente"
+                                value={dataNascimento}
+                                onChange={handleDataNascimento}
                             />
                         </div>
 
