@@ -40,6 +40,19 @@ export default function CadastrarClientePage() {
     const [nullTitular, setNullTitular] = useState<boolean>(true)
     const [errorTitular, setErrorTitular] = useState<boolean>(false)
 
+    const [codigoPostal, setCodigoPostal] = useState<string>("")
+    const [errorCodigoPostal, setErrorCodigoPostal] = useState<boolean>(false)
+    const [pais, setPais] = useState<string>("")
+    const [errorPais, setErrorPais] = useState<boolean>(false)
+    const [estado, setEstado] = useState<string>("")
+    const [errorEstado, setErrorEstado] = useState<boolean>(false)
+    const [cidade, setCidade] = useState<string>("")
+    const [errorCidade, setErrorCidade] = useState<boolean>(false)
+    const [bairro, setBairro] = useState<string>("")
+    const [errorBairro, setErrorBairro] = useState<boolean>(false)
+    const [rua, setRua] = useState<string>("")
+    const [errorRua, setErrorRua] = useState<boolean>(false)
+
     const [telefone, setTelefone] = useState<string>("")
     const [errorTelefone, setErrorTelefone] = useState<boolean>(false)
     const [telefones, setTelefones] = useState<Telefone[]>([])
@@ -70,6 +83,12 @@ export default function CadastrarClientePage() {
 
     function limparCamposTitular() {
         setTitular("")
+        setCodigoPostal("")
+        setPais("")
+        setEstado("")
+        setCidade("")
+        setBairro("")
+        setRua("")
     }
 
     function limparCamposDependente() {
@@ -86,6 +105,12 @@ export default function CadastrarClientePage() {
         setErrorTitular(false)
         setErrorTelefone(false)
         setErrorTelefones(false)
+        setErrorCodigoPostal(false)
+        setErrorPais(false)
+        setErrorEstado(false)
+        setErrorCidade(false)
+        setErrorBairro(false)
+        setErrorRua(false)
     }
 
     function verificarCamposRequired(): boolean {
@@ -125,6 +150,42 @@ export default function CadastrarClientePage() {
             return false
         }
 
+        if (tipoCliente === "titular" && codigoPostal === "") {
+            setErrorCodigoPostal(true)
+            focusCodigoPostal()
+            return false
+        }
+
+        if (tipoCliente === "titular" && pais === "") {
+            setErrorPais(true)
+            focusPais()
+            return false
+        }
+
+        if (tipoCliente === "titular" && estado === "") {
+            setErrorEstado(true)
+            focusEstado()
+            return false
+        }
+
+        if (tipoCliente === "titular" && cidade === "") {
+            setErrorCidade(true)
+            focusCidade()
+            return false
+        }
+
+        if (tipoCliente === "titular" && bairro === "") {
+            setErrorBairro(true)
+            focusBairro()
+            return false
+        }
+
+        if (tipoCliente === "titular" && rua === "") {
+            setErrorRua(true)
+            focusRua()
+            return false
+        }
+
         return true
     }
 
@@ -157,6 +218,36 @@ export default function CadastrarClientePage() {
 
     function focusTelefone() {
         const input = document.getElementById("telefone")
+        if (input) input.focus()
+    }
+
+    function focusCodigoPostal() {
+        const input = document.getElementById("codigoPostal")
+        if (input) input.focus()
+    }
+
+    function focusPais() {
+        const input = document.getElementById("pais")
+        if (input) input.focus()
+    }
+
+    function focusEstado() {
+        const input = document.getElementById("estado")
+        if (input) input.focus()
+    }
+
+    function focusCidade() {
+        const input = document.getElementById("cidade")
+        if (input) input.focus()
+    }
+
+    function focusBairro() {
+        const input = document.getElementById("bairro")
+        if (input) input.focus()
+    }
+
+    function focusRua() {
+        const input = document.getElementById("rua")
         if (input) input.focus()
     }
 
@@ -247,6 +338,40 @@ export default function CadastrarClientePage() {
         setTelefone(numero)
     }
 
+    const handleCodigoPostal = (e: React.ChangeEvent<HTMLInputElement>) => {
+        limparErros()
+        let numero = e.target.value
+        numero = numero.replace(/\D/g, "")
+        numero = numero.replace(/(\d{5})(\d{3})$/, "$1-$2")
+        if (numero.length > 9) return
+        setCodigoPostal(numero)
+    }
+
+    const handlePais = (e: React.ChangeEvent<HTMLInputElement>) => {
+        limparErros()
+        setPais(e.target.value)
+    }
+
+    const handleEstado = (e: React.ChangeEvent<HTMLInputElement>) => {
+        limparErros()
+        setEstado(e.target.value)
+    }
+
+    const handleCidade = (e: React.ChangeEvent<HTMLInputElement>) => {
+        limparErros()
+        setCidade(e.target.value)
+    }
+
+    const handleBairro = (e: React.ChangeEvent<HTMLInputElement>) => {
+        limparErros()
+        setBairro(e.target.value)
+    }
+
+    const handleRua = (e: React.ChangeEvent<HTMLInputElement>) => {
+        limparErros()
+        setRua(e.target.value)
+    }
+
     /* class condicional */
 
     function classErrorNome(): string {
@@ -307,6 +432,30 @@ export default function CadastrarClientePage() {
 
     function classErrorTelefones(): string {
         return errorTelefones && tipoCliente === "titular" ? form.errorDiv + " " + form.visualizar : form.visualizar
+    }
+
+    function classErrorCodigoPostal(): string {
+        return errorCodigoPostal ? form.errorInput + " text" : "text"
+    }
+
+    function classErrorPais(): string {
+        return errorPais ? form.errorInput + " text" : "text"
+    }
+
+    function classErrorEstado(): string {
+        return errorEstado ? form.errorInput + " text" : "text"
+    }
+
+    function classErrorCidade(): string {
+        return errorCidade ? form.errorInput + " text" : "text"
+    }
+
+    function classErrorBairro(): string {
+        return errorBairro ? form.errorInput + " text" : "text"
+    }
+
+    function classErrorRua(): string {
+        return errorRua ? form.errorInput + " text" : "text"
     }
 
     /* funcoes finais */
@@ -567,7 +716,79 @@ export default function CadastrarClientePage() {
                         {
                             tipoCliente === "titular" && (
                                 <>
-                                    <div className={form.campo}>
+                                    <div className={form.campo}> {/* Endereco */}
+                                        <label className="text title required">Endereço</label>
+                                        <div className={form.endereco}>
+                                            <div className={form.enderecoCampo}>
+                                                <label className="text">Código Postal: </label>
+                                                <input
+                                                    id = "codigoPostal" 
+                                                    type="text" 
+                                                    className={classErrorCodigoPostal()}
+                                                    placeholder="00000-000"
+                                                    value={codigoPostal}
+                                                    onChange={handleCodigoPostal}
+                                                />
+                                            </div>
+                                            <div className={form.enderecoCampo}>
+                                                <label className="text">País: </label>
+                                                <input
+                                                    id = "pais"
+                                                    type="text"
+                                                    className={classErrorPais()}
+                                                    placeholder="País"
+                                                    value={pais}
+                                                    onChange={handlePais}
+                                                />
+                                            </div>
+                                            <div className={form.enderecoCampo}>
+                                                <label className="text">Estado: </label>
+                                                <input
+                                                    id = "estado"
+                                                    type="text"
+                                                    className={classErrorEstado()}
+                                                    placeholder="Estado"
+                                                    value={estado}
+                                                    onChange={handleEstado}
+                                                />
+                                            </div>
+                                            <div className={form.enderecoCampo}>
+                                                <label className="text">Cidade: </label>
+                                                <input
+                                                    id = "cidade"
+                                                    type="text"
+                                                    className={classErrorCidade()}
+                                                    placeholder="Cidade"
+                                                    value={cidade}
+                                                    onChange={handleCidade}
+                                                />
+                                            </div>
+                                            <div className={form.enderecoCampo}>
+                                                <label className="text">Bairro: </label>
+                                                <input
+                                                    id = "bairro"
+                                                    type="text"
+                                                    className={classErrorBairro()}
+                                                    placeholder="Bairro"
+                                                    value={bairro}
+                                                    onChange={handleBairro}
+                                                />
+                                            </div>
+                                            <div className={form.enderecoCampo}>
+                                                <label className="text">Rua: </label>
+                                                <input
+                                                    id = "rua"
+                                                    type="text"
+                                                    className={classErrorRua()}
+                                                    placeholder="Rua"
+                                                    value={rua}
+                                                    onChange={handleRua}
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className={form.campo}> {/* Telefones */}
                                         <label className="text title required">Telefones</label>
                                         <input 
                                             id = "telefone"
